@@ -117,28 +117,6 @@ void main() {
       expect(tester.takeException(), isInstanceOf<AssertionError>());
     });
 
-    testWidgets(
-        'updateShouldNotify should return false when blocs are the same',
-        (WidgetTester tester) async {
-      final _blocProviderA =
-          BlocProvider(bloc: CounterBloc(), child: Container());
-      final _blocProviderB =
-          BlocProvider(bloc: CounterBloc(), child: Container());
-
-      expect(_blocProviderB.updateShouldNotify(_blocProviderA), false);
-    });
-
-    testWidgets(
-        'updateShouldNotify should return true when blocs are different',
-        (WidgetTester tester) async {
-      final _blocProviderA =
-          BlocProvider(bloc: CounterBloc(), child: Container());
-      final _blocProviderB =
-          BlocProvider(bloc: SimpleBloc(), child: Container());
-
-      expect(_blocProviderB.updateShouldNotify(_blocProviderA), true);
-    });
-
     testWidgets('passes bloc to children', (WidgetTester tester) async {
       final CounterBloc _bloc = CounterBloc();
       final CounterPage _child = CounterPage();
