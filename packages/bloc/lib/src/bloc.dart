@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:bloc/bloc.dart';
 
@@ -36,6 +37,7 @@ abstract class Bloc<E, S> {
 
   /// Closes the event [Stream].
   /// This is automatically handled by [BlocBuilder].
+  @mustCallSuper
   void dispose() {
     _eventSubject.close();
     _stateSubject.close();
